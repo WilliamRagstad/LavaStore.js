@@ -1,8 +1,8 @@
-export abstract class Storage {
+abstract class LocalStorageWrapper {
     private static serialize = (data: any) => JSON.stringify(data);
     private static deserialize = (json: string) => JSON.parse(json);
-    public static Save = (label: string, data: any) => localStorage.setItem(label, Storage.serialize(data))
-    public static Load = (label: string) => Storage.deserialize(localStorage.getItem(label));
+    public static Save = (label: string, data: any) => localStorage.setItem(label, LocalStorageWrapper.serialize(data))
+    public static Load = (label: string) => LocalStorageWrapper.deserialize(localStorage.getItem(label));
     public static Contains = (label: string) => !!localStorage.getItem(label);
 }
 
@@ -48,8 +48,8 @@ export class StorageDocument {
 
     public Load = () => {
         if (this.parent) throw new Error("Cannot load child document, please load root.");
-        if (!Storage.Contains(this.id)) return;
-        let document = Storage.Load(this.id);
+        if (!LocalStorageWrapper.Contains(this.id)) return;
+        let document = LocalStorageWrapper.Load(this.id);
         this.fields = document.fields;
 
         function loadCollections(collections: object): StorageCollection[] {
@@ -87,7 +87,7 @@ export class StorageDocument {
 
     public Save = () => {
         if (this.parent) this.parent.parent.Save();
-        else Storage.Save(this.id, this.build()); // This is root, store all containing data in one big object.
+        else LocalStorageWrapper.Save(this.id, this.build()); // This is root, store all containing data in one big object.
     }
     public Set = (data: object) => {
         this.fields = { ...data };
