@@ -5,6 +5,7 @@
   "main": "lib/LavaStore.js",
   "types": "lib/LavaStore.d.ts",
   "scripts": {
+    "test": "echo no tests",
     "build": "del /S \"lib\" /Q && tsc"
   },
   "repository": {
