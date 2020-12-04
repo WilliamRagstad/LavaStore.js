@@ -1,6 +1,6 @@
 {
   "name": "lavastore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "LavaStore is a flexible and scalable local database for the web.",
   "main": "lib/LavaStore.js",
   "types": "lib/LavaStore.d.ts",
