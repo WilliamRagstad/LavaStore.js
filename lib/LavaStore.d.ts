@@ -4,4 +4,4 @@ import { LSCollection } from './LSCollection';
 export declare class LavaStore extends LSDocument {
     set parent(p: undefined);
 }
-export type { IDictionary, LSDocument, LSCollection };
+export { IDictionary, LSDocument, LSCollection };

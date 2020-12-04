@@ -9,7 +9,7 @@ export class LavaStore extends LSDocument {
 }
 
 // Export all other types
-export type {
+export {
     IDictionary,
     LSDocument,
     LSCollection
