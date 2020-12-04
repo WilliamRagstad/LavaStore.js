@@ -1,2 +1,2 @@
 # LavaStore
- LavaStore is a flexible, scalable local database for the web
+LavaStore is a flexible and scalable local database for the web.
