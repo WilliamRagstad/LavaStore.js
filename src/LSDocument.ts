@@ -6,7 +6,7 @@ import { LSCollection } from "./LSCollection";
  */
 abstract class LSWrapper {
     public static Save = (label: string, data: any) => localStorage.setItem(label, JSON.stringify(data))
-    public static Load = (label: string) => JSON.parse(localStorage.getItem(label) ?? '');
+    public static Load = (label: string) => JSON.parse(localStorage.getItem(label) || '');
     public static Contains = (label: string) => !!localStorage.getItem(label);
 }
 
@@ -97,7 +97,10 @@ export class LSDocument {
     }
 
     public Save = () => {
-        if (this.parent) this.parent.parent?.Save();
+        if (this.parent) {
+            if (this.parent.parent) this.parent.parent.Save();
+            else throw new Error(`Parent collection '${this.parent.id}' must not be root of store. Please append collection to a valid root document.`);
+        }
         else LSWrapper.Save(this.id, this.build()); // This is root, store all containing data in one big object.
     }
     public Set = (data: object) => {
