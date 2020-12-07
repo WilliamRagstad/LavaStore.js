@@ -1,7 +1,7 @@
 <div align="center">
     <img src="assets/logo.png" width="250px"/>
     <h1>LavaStore</h1>
-    <p>A flexible and scalable local <em>Firestore-like</em> database for the web</p><br>
+    <p>A flexible and scalable local database for the web</p><br>
     <img alt="NPM" src="https://img.shields.io/npm/v/lavastore?style=flat-square&color=%23f90">
     <img alt="NPM" src="https://img.shields.io/npm/dw/lavastore?style=flat-square&color=%23f90">
     <br/>
@@ -13,7 +13,7 @@
 
 ## About
 
-LavaStore is structured like the Firestore database system with Documents and Collections.
+LavaStore is a local Firestore-like structured database system with Documents and Collections.
 
 
 ## Install
