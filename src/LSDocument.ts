@@ -30,8 +30,8 @@ export class LSDocument {
         Object.values(this.collections).forEach((val: LSCollection) => val.parent = this);
     }
 
-    public Collection = (id: string): LSCollection | undefined => this.collections[id];
-    public Contains = (id: string): boolean => this.collections[id] !== undefined;
+    public Collection(id: string): LSCollection | undefined { return this.collections[id]; }
+    public Contains(id: string): boolean { return this.collections[id] !== undefined; }
     public Add(collection: LSCollection) {
         collection.parent = this;
         this.collections[collection.id] = collection;
@@ -57,7 +57,7 @@ export class LSDocument {
         this.Add(prev as LSCollection);
     }
 
-    public Load = () => {
+    public Load() {
         if (this.parent) throw new Error("Cannot load child document, please load root.");
         if (!LSWrapper.Contains(this.id)) return;
         const document = LSWrapper.Load(this.id);
@@ -79,7 +79,7 @@ export class LSDocument {
         this.collections = loadCollections(document.collections);
     }
 
-    private build = (): object => {
+    private build(): object {
         return {
             fields: this.fields,
             collections: Object.values(this.collections).reduce((cols, col: LSCollection) => {
@@ -96,18 +96,19 @@ export class LSDocument {
         }
     }
 
-    public Save = () => {
+    public Save() {
         if (this.parent) {
             if (this.parent.parent) this.parent.parent.Save();
             else throw new Error(`Parent collection '${this.parent.id}' must not be root of store. Please append collection to a valid root document.`);
         }
         else LSWrapper.Save(this.id, this.build()); // This is root, store all containing data in one big object.
     }
-    public Set = (data: object) => {
+    public Set(data: object) {
         this.fields = { ...data };
         this.Save();
     }
-    public Get = () => this.fields;
+    public Get() { return this.fields; }
+    public HasData() { return this.fields !== undefined && this.fields !== {}; }
 
     /**
      * Set data of a nested document. Path is insured before data is set.
@@ -122,7 +123,9 @@ export class LSDocument {
      * Get data from a nested document
      * @param path path to document. Must follow ([COLLECTION]/[DOCUMENT])+ format! Eg. 'users/Bob/tweets/7GA1J4V'. Path can also be array like ['users', 'Bob', 'tweets', '7GA1J4V'].
      */
-    public GetPath = (path: string | string[]): object => this.DocumentPath(path).Get();
+    public GetPath(path: string | string[]): object {
+        return this.DocumentPath(path).Get();
+    }
 
     /* Path helper functions */
     private pathToArray = (path: string | string[]): string[] => Array.isArray(path) ? path : (path as string).split('/');
@@ -164,5 +167,5 @@ export class LSDocument {
         if (result !== undefined && !(result instanceof LSDocument)) throw new Error("Failed unexpectedly, return value was not of type LSDocument!");
         return result as LSDocument;
     }
-    public PassTo = (callback: ((data: object) => any)) => callback(this.fields);
+    public PassTo(callback: ((data: object) => any)) { callback(this.fields); }
 }
