@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/logo_2.png" width="250px"/>
+    <img src="assets/logo.png" width="250px"/>
     <h1>LavaStore</h1>
     <p>A flexible and scalable local <em>Firestore-like</em> database for the web</p><br>
     <img alt="NPM" src="https://img.shields.io/npm/v/lavastore?style=flat-square&color=%23f90">
