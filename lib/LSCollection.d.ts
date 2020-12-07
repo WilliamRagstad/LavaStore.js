@@ -3,7 +3,7 @@ import { IDictionary } from "./IDictionary";
 export declare class LSCollection {
     id: string;
     parent: LSDocument | undefined;
-    private documents;
+    documents: IDictionary<LSDocument>;
     constructor(id: string, documents?: IDictionary<LSDocument>);
     Contains(id: string): boolean;
     Document(id: string): LSDocument | undefined;

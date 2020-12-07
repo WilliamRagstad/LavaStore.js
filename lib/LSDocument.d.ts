@@ -6,7 +6,7 @@ export declare class LSDocument {
     private _parent;
     get parent(): LSCollection | undefined;
     set parent(value: LSCollection | undefined);
-    private collections;
+    collections: IDictionary<LSCollection>;
     constructor(id: string, fields?: object, collections?: IDictionary<LSCollection>);
     Collection(id: string): LSCollection | undefined;
     Contains(id: string): boolean;
