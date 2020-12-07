@@ -3,10 +3,10 @@ import { IDictionary } from "./IDictionary";
 export declare class LSCollection {
     id: string;
     parent: LSDocument | undefined;
-    documents: IDictionary<LSDocument>;
+    private documents;
     constructor(id: string, documents?: IDictionary<LSDocument>);
-    Contains: (id: string) => boolean;
-    Document: (id: string) => LSDocument | undefined;
-    Add(doc: LSDocument): void;
+    Contains(id: string): boolean;
+    Document(id: string): LSDocument | undefined;
+    Add(document: LSDocument): void;
     Remove(id: string): void;
 }
