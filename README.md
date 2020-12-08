@@ -24,10 +24,11 @@ LavaStore is a flexible and scalable local database for web development. It uses
 - Intuitive **data modeling structure** inspired from [Firestore](https://firebase.google.com/docs/firestore/data-model) *(Firebase)*
 - Simple and **readable** API
 - **TypeScript** types Support
-- Complex **NoSQL** queries
 
 ### Third-party extensions
 
+- NoSQL Support
+  - [LavaStore NoSQL](https://github.com/WilliamRagstad/LavaStore-NoSQL) *(official)*
 - ~~SQL Support~~ (in-progress)
 - ~~Asynchronous~~ (in-progress)
 
