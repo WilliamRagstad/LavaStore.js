@@ -2,7 +2,7 @@ import { LSDocument } from "./LSDocument";
 import { IDictionary } from './IDictionary';
 import { LSCollection } from './LSCollection';
 
-export class LavaStore extends LSDocument {
+class LavaStore extends LSDocument {
     public set parent(p: undefined) {
         throw new Error(`Cannot add LavaStore Document '${this.id}' as child to a Collection!`);
     }
@@ -11,6 +11,8 @@ export class LavaStore extends LSDocument {
         this.Load(); // Load cached data from localstorage
     }
 }
+
+export default LavaStore;
 
 // Export all other types
 export {
