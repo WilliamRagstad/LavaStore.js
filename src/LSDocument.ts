@@ -5,9 +5,9 @@ import { LSCollection } from "./LSCollection";
  * LocalStorage Wrapper class
  */
 abstract class LSWrapper {
-    public static Save = (label: string, data: any) => localStorage.setItem('lavastore_' + label, JSON.stringify(data))
-    public static Load = (label: string) => JSON.parse(localStorage.getItem('lavastore_' + label) || '');
-    public static Contains = (label: string) => !!localStorage.getItem('lavastore_' + label);
+    public static Save = (label: string, data: any) => localStorage.setItem('lavastore:' + label, JSON.stringify(data))
+    public static Load = (label: string) => JSON.parse(localStorage.getItem('lavastore:' + label) || '');
+    public static Contains = (label: string) => !!localStorage.getItem('lavastore:' + label);
 }
 
 // tslint:disable-next-line: max-classes-per-file
