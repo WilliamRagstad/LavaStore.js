@@ -27,9 +27,8 @@ LavaStore is a flexible and scalable local database for web development. It uses
 
 ### Third-party extensions
 
-- NoSQL Support
-  - [LavaStore NoSQL](https://github.com/WilliamRagstad/LavaStore-NoSQL) *(official)*
-- ~~SQL Support~~ (in-progress)
+- Query Language Support
+  - [LavaStore QL](https://github.com/WilliamRagstad/LavaStore-QL) *(official)
 - ~~Asynchronous~~ (in-progress)
 
 
