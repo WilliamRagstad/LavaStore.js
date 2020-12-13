@@ -64,6 +64,7 @@ export class LSDocument {
                 else if (currentNode instanceof LSCollection) currentNode = currentNode.Add(new LSDocument(pathNode));
             }
         }
+        this.Save();
     }
 
     public Load() {
