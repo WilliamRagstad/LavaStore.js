@@ -10,7 +10,7 @@ export declare class LSDocument {
     constructor(id: string, fields?: object, collections?: IDictionary<LSCollection>);
     Collection(id: string): LSCollection | undefined;
     Contains(id: string): boolean;
-    Add(collection: LSCollection): void;
+    Add(collection: LSCollection): LSCollection;
     Remove(id: string): void;
     InsurePath(path: string | string[]): void;
     Load(): void;

@@ -32,10 +32,11 @@ export class LSDocument {
 
     public Collection(id: string): LSCollection | undefined { return this.collections[id]; }
     public Contains(id: string): boolean { return this.collections[id] !== undefined; }
-    public Add(collection: LSCollection) {
+    public Add(collection: LSCollection): LSCollection {
         collection.parent = this;
         this.collections[collection.id] = collection;
         this.Save();
+        return this.collections[collection.id];
     }
     public Remove(id: string) {
         delete this.collections[id];

@@ -14,10 +14,11 @@ export class LSCollection {
 
     public Contains(id: string): boolean { return this.documents[id] !== undefined; }
     public Document(id: string): LSDocument | undefined { return this.documents[id]; }
-    public Add(document: LSDocument) {
+    public Add(document: LSDocument): LSDocument {
         document.parent = this;
         this.documents[document.id] = document;
         if (this.parent) this.parent.Save();
+        return this.documents[document.id];
     }
     public Remove(id: string) {
         delete this.documents[id];

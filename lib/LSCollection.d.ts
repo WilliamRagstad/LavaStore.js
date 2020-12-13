@@ -7,6 +7,6 @@ export declare class LSCollection {
     constructor(id: string, documents?: IDictionary<LSDocument>);
     Contains(id: string): boolean;
     Document(id: string): LSDocument | undefined;
-    Add(document: LSDocument): void;
+    Add(document: LSDocument): LSDocument;
     Remove(id: string): void;
 }
