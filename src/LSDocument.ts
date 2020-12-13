@@ -45,7 +45,7 @@ export class LSDocument {
      * @param path the path to insure
      */
     public InsurePath(path: string | string[]) {
-        const arr = Array.isArray(path) ? path : (path as string).split('/');
+        const arr = Array.isArray(path) ? path : ((path as string).includes('/') ? (path as string).split('/') : (path as string).split('\\'));
         if (arr.length === 0) throw new Error("Path must have entries. Please follow the format: ([COLLECTION]/[DOCUMENT])+");
         if (arr.length % 2 !== 0) throw new Error("Path must follow ([COLLECTION]/[DOCUMENT])+ format! Eg. 'users/Bob/tweets/7GA1J4V'.");
 
