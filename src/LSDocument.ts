@@ -54,6 +54,7 @@ export class LSDocument {
         for (let i = 0; i < pathArray.length; i++) {
             const pathNode = pathArray[i];
             if (currentNode.Contains(pathNode)) {
+                // Walk to next node
                 if (currentNode instanceof LSDocument) currentNode = currentNode.Collection(pathNode) as LSCollection;
                 else if (currentNode instanceof LSCollection) currentNode = currentNode.Document(pathNode) as LSDocument;
             }

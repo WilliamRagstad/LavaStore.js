@@ -1,5 +1,5 @@
 import { IDictionary } from "./IDictionary";
-import { LSCollection } from "./LSCollection";
+import { LSCollection } from './LSCollection';
 export declare class LSDocument {
     private fields;
     id: string;
