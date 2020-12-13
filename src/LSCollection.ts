@@ -9,7 +9,7 @@ export class LSCollection {
     constructor(id: string, documents: IDictionary<LSDocument> = {}) {
         this.id = id;
         this.documents = documents;
-        Object.values(this.documents).forEach((val: LSDocument) => val.parent = this);
+        Object.values(this.documents).forEach((document: LSDocument) => document.parent = this);
     }
 
     public Contains(id: string): boolean { return this.documents[id] !== undefined; }

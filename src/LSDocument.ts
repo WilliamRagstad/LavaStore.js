@@ -27,7 +27,7 @@ export class LSDocument {
         this.id = id;
         this.fields = fields;
         this.collections = collections;
-        Object.values(this.collections).forEach((val: LSCollection) => val.parent = this);
+        Object.values(this.collections).forEach((collection: LSCollection) => collection.parent = this);
     }
 
     public Collection(id: string): LSCollection | undefined { return this.collections[id]; }
@@ -86,6 +86,7 @@ export class LSDocument {
             }, {});
         }
         this.collections = loadCollections(document.collections);
+        Object.values(this.collections).forEach((collection: LSCollection) => collection.parent = this);
     }
 
     private build(): object {
