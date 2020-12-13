@@ -1,5 +1,5 @@
 import { IDictionary } from "./IDictionary";
-import { LSCollection } from "./LSCollection";
+import { LSCollection } from './LSCollection';
 
 /**
  * LocalStorage Wrapper class
@@ -46,16 +46,23 @@ export class LSDocument {
      * @param path the path to insure
      */
     public InsurePath(path: string | string[]) {
-        const arr = Array.isArray(path) ? path : ((path as string).includes('/') ? (path as string).split('/') : (path as string).split('\\'));
-        if (arr.length === 0) throw new Error("Path must have entries. Please follow the format: ([COLLECTION]/[DOCUMENT])+");
-        if (arr.length % 2 !== 0) throw new Error("Path must follow ([COLLECTION]/[DOCUMENT])+ format! Eg. 'users/Bob/tweets/7GA1J4V'.");
+        const pathArray = Array.isArray(path) ? path : ((path as string).includes('/') ? (path as string).split('/') : (path as string).split('\\'));
+        if (pathArray.length === 0) throw new Error("Path must have entries. Please follow the format: ([COLLECTION]/[DOCUMENT])+");
+        if (pathArray.length % 2 !== 0) throw new Error("Path must follow ([COLLECTION]/[DOCUMENT])+ format! Eg. 'users/Bob/tweets/7GA1J4V'.");
 
-        let prev: LSDocument | LSCollection = new LSDocument(arr[arr.length - 1]);
-        for (let i = arr.length - 2; i >= 0; i--) {
-            if (prev instanceof LSDocument) prev = new LSCollection(arr[i], { [prev.id]: prev });
-            else if (prev instanceof LSCollection) prev = new LSDocument(arr[i], undefined, { [prev.id]: prev });
+        let currentNode: LSDocument | LSCollection = this;
+        for (let i = 0; i < pathArray.length; i++) {
+            const pathNode = pathArray[i];
+            if (currentNode.Contains(pathNode)) {
+                if (currentNode instanceof LSDocument) currentNode = currentNode.Collection(pathNode) as LSCollection;
+                else if (currentNode instanceof LSCollection) currentNode = currentNode.Document(pathNode) as LSDocument;
+            }
+            else {
+                // Add node to Document or Collection
+                if (currentNode instanceof LSDocument) currentNode = currentNode.Add(new LSCollection(pathNode));
+                else if (currentNode instanceof LSCollection) currentNode = currentNode.Add(new LSDocument(pathNode));
+            }
         }
-        this.Add(prev as LSCollection);
     }
 
     public Load() {
