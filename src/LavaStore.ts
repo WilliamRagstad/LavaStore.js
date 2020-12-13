@@ -1,6 +1,7 @@
 import { LSDocument } from "./LSDocument";
 import { IDictionary } from './IDictionary';
 import { LSCollection } from './LSCollection';
+import LSHelpers from './LSHelpers';
 
 class LavaStore extends LSDocument {
     public set parent(p: undefined) {
@@ -18,5 +19,6 @@ export default LavaStore;
 export {
     IDictionary,
     LSDocument,
-    LSCollection
+    LSCollection,
+    LSHelpers
 }
