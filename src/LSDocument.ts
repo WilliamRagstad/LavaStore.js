@@ -51,8 +51,7 @@ export class LSDocument {
         if (pathArray.length % 2 !== 0) throw new Error("Path must follow ([COLLECTION]/[DOCUMENT])+ format! Eg. 'users/Bob/tweets/7GA1J4V'.");
 
         let currentNode: LSDocument | LSCollection = this;
-        for (let i = 0; i < pathArray.length; i++) {
-            const pathNode = pathArray[i];
+        for (const pathNode of pathArray) {
             if (currentNode.Contains(pathNode)) {
                 // Walk to next node
                 if (currentNode instanceof LSDocument) currentNode = currentNode.Collection(pathNode) as LSCollection;
