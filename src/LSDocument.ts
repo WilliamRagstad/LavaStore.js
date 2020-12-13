@@ -64,13 +64,13 @@ export class LSDocument {
         this.fields = document.fields;
 
         function loadCollections(collections: object): IDictionary<LSCollection> {
-            return Object.entries(collections).reduce((cols: any, [colkey, col]: [string, LSCollection]) => {
+            return Object.entries(collections).reduce((collectionValues: any, [collectionKey, collectionValue]: [string, LSCollection]) => {
                 return {
-                    ...cols,
-                    [colkey]: new LSCollection(colkey, Object.entries(col).reduce((docs: any, [dockey, doc]: [string, any]) => {
+                    ...collectionValues,
+                    [collectionKey]: new LSCollection(collectionKey, Object.entries(collectionValue).reduce((documentValues: any, [documentKey, documentValue]: [string, any]) => {
                         return {
-                            ...docs,
-                            [dockey]: new LSDocument(dockey, doc.fields, loadCollections(doc.collections))
+                            ...documentValues,
+                            [documentKey]: new LSDocument(documentKey, documentValue.fields, loadCollections(documentValue.collections))
                         }
                     }, {}))
                 }
