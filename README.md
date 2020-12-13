@@ -7,7 +7,10 @@
     <br/>
     <img alt="GitHub" src="https://img.shields.io/github/last-commit/WilliamRagstad/lavastore?style=flat-square&color=f70">
     <img alt="GitHub" src="https://img.shields.io/github/contributors/WilliamRagstad/lavastore?style=flat-square&color=f60">
+    <br/>
+    <img alt="NPM" src="https://img.shields.io/npm/dt/lavastore?style=flat-square&label=total downloads&color=f40">
 </div>
+
 
 
 
